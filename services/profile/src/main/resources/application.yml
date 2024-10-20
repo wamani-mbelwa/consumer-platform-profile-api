@@ -1,0 +1,29 @@
+
+micronaut:
+  application:
+    name: profile
+  server:
+    port: 8080
+  metrics:
+    enabled: true
+    export:
+      prometheus:
+        enabled: true
+        scrape:
+          enabled: true
+datasources:
+  default:
+    url: ${DATASOURCE_URL:`jdbc:postgresql://localhost:5432/appdb`}
+    driverClassName: org.postgresql.Driver
+    username: ${DATASOURCE_USER:app}
+    password: ${DATASOURCE_PASS:app}
+jpa:
+  default:
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: update
+
+kafka:
+  bootstrap:
+    servers: ${KAFKA_BOOTSTRAP:`localhost:9092`}
